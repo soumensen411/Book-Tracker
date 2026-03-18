@@ -11,12 +11,13 @@ const Booklist = ({ books, onDel, onStatus }) => {
               className="list-row flex flex-col sm:flex-row gap-4 p-3 mt-2 border border-neutral-500 items-center"
             >
               <div className="text-4xl font-thin opacity-30 tabular-nums">
-                {index + 1}
+                {`${index<9 ? `0${index + 1}` : index+1}`}
+
               </div>
               <div>
                 <img
                   className="size-15 rounded-box"
-                  src="https://images-na.ssl-images-amazon.com/images/I/81kg51XRc1L._AC_UL232_SR232,232_.jpg"
+                  src="https://as2.ftcdn.net/v2/jpg/05/97/47/95/1000_F_597479556_7bbQ7t4Z8k3xbAloHFHVdZIizWK1PdOo.jpg"
                 />
               </div>
               <div className="list-col-grow flex-1 text-center sm:text-left">
