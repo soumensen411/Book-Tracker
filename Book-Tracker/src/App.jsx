@@ -6,14 +6,21 @@ import Infobar from "./components/Infobar";
 import useBooks from "./hooks/useBooks";
 
 const App = () => {
-  const { books, handleDelete, onAdd } = useBooks();
+  const { books, handleDelete, onAdd, handleStatus } = useBooks();
+  const [filter, setFilter] = useState("all");
 
+  const filterebooks = books.filter((book) => {
+    if (filter === "wishlist") return book.status === "want to read";
+    if (filter === "reading") return book.status === "reading";
+    if (filter === "completed") return book.status === "completed";
+    return true;
+  });
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col justify-center items-center p-4">
       <Header
         total={books.length}
         wishlist={books.filter((b) => b.status === "want to read").length}
-        reading={books.filter((b) => b.status === "pending").length}
+        reading={books.filter((b) => b.status === "reading").length}
         completed={books.filter((b) => b.status === "completed").length}
       />
       <Input onAdd={onAdd} />
@@ -21,9 +28,15 @@ const App = () => {
         total={books.length}
         wishlist={books.filter((b) => b.status === "want to read").length}
         completed={books.filter((b) => b.status === "completed").length}
-        reading={books.filter((b) => b.status === "pending").length}
+        reading={books.filter((b) => b.status === "reading").length}
+        filter={filter}
+        onFilter={setFilter}
       />
-      <Booklist books={books} onDel={handleDelete} />
+      <Booklist
+        books={filterebooks}
+        onDel={handleDelete}
+        onStatus={handleStatus}
+      />
     </div>
   );
 };

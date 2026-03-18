@@ -22,11 +22,24 @@ const useBooks = () => {
     setBooks((prev) => prev.filter((book) => book.id !== id));
   }
 
+  function handleStatus(id) {
+    const next = {
+      "want to read": "reading",
+      reading: "completed",
+      completed: "want to read",
+    };
+    setBooks((prev) =>
+      prev.map((book) =>
+        book.id === id ? { ...book, status: next[book.status] } : book,
+      ),
+    );
+  }
+
   useEffect(() => {
     localStorage.setItem("books", JSON.stringify(books));
   }, [books]);
 
-  return { books, handleDelete, onAdd };
+  return { books, handleDelete, onAdd, handleStatus };
 };
 
 export default useBooks;

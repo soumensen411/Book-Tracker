@@ -1,14 +1,14 @@
 import React from "react";
 
-const Booklist = ({ books, onDel }) => {
+const Booklist = ({ books, onDel, onStatus }) => {
   return (
-    <div>
-      <div className="w-1/2 ">
+    <div className="w-full flex justify-center">
+      <div className="w-full md:w-3/4 lg:w-1/2">
         <ul className="list bg-base-100 rounded-box  shadow-md ">
           {books.map((book, index) => (
             <li
               key={book.id}
-              className="list-row mt-2 border border-neutral-500 items-center"
+              className="list-row flex flex-col sm:flex-row gap-4 p-3 mt-2 border border-neutral-500 items-center"
             >
               <div className="text-4xl font-thin opacity-30 tabular-nums">
                 {index + 1}
@@ -16,10 +16,10 @@ const Booklist = ({ books, onDel }) => {
               <div>
                 <img
                   className="size-15 rounded-box"
-                  src="https://img.daisyui.com/images/profile/demo/1@94.webp"
+                  src="https://images-na.ssl-images-amazon.com/images/I/81kg51XRc1L._AC_UL232_SR232,232_.jpg"
                 />
               </div>
-              <div className="list-col-grow">
+              <div className="list-col-grow flex-1 text-center sm:text-left">
                 <div className="text-lg font-bold">{book.name}</div>
                 <div className="text-xs uppercase font-semibold opacity-50">
                   {book.author}
@@ -28,9 +28,14 @@ const Booklist = ({ books, onDel }) => {
                   {book.status}
                 </button>
               </div>
-              <div className="">
-                <button className="mr-2 btn  bg-transparent border border-neutral-500">
-                  {book.status}
+              <div className="flex flex-wrap justify-center gap-2">
+                <button
+                  onClick={() => onStatus(book.id)}
+                  className="btn bg-transparent border border-neutral-500"
+                >
+                  {book.status === "want to read" && "Start Reading"}
+                  {book.status === "reading" && "Mark Completed"}
+                  {book.status === "completed" && "Re-Read"}
                 </button>
                 <button
                   onClick={() => onDel(book.id)}

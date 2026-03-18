@@ -13,10 +13,10 @@ const Input = ({ onAdd }) => {
     setStatus("");
   }
   return (
-    <div>
-      <div className="bg-neutral-700 p-10 w-1/2 rounded border border-neutral-200">
+    <div className="w-full flex justify-center">
+      <div className="bg-neutral-700 p-5 md:p-10 w-full md:w-3/4 lg:w-1/2 rounded border border-neutral-200">
         <p className="text-lg font-bold">Add a new book</p>
-        <div className="flex  items-center">
+        <div className="flex flex-col md:flex-row items-center gap-4">
           <fieldset className="fieldset w-full">
             <legend className="fieldset-legend">Title</legend>
             <input
@@ -40,7 +40,7 @@ const Input = ({ onAdd }) => {
           </fieldset>
         </div>
         <label className="text-sm mb-2 mt-5 text-gray-300">Status</label>
-        <div className="w-full mt-2 flex items-center  gap-2">
+        <div className="w-full mt-2 flex flex-col sm:flex-row items-center gap-2">
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
@@ -49,12 +49,12 @@ const Input = ({ onAdd }) => {
             className="select select-bordered  w-full bg-neutral-700 "
           >
             <option value="want to read">Want to read</option>
-            <option value="pending">Currently Reading</option>
+            <option value="reading">Currently Reading</option>
             <option value="completed">Completed</option>
           </select>
           <button
             onClick={() => handleSubmit()}
-            className="btn  bg-transparent border border-neutral-500"
+            className="btn w-full sm:w-auto bg-transparent border border-neutral-500"
           >
             Add Book
           </button>

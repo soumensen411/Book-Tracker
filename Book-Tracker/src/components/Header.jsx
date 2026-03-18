@@ -2,13 +2,13 @@ import React from "react";
 
 const Header = ({ total, wishlist, completed, reading }) => {
   return (
-    <div className="p-10">
+    <div className="p-5 md:p-10 w-full md:w-3/4 lg:w-1/2">
       <h1 className="text-xl font-bold"> My Book Tracker</h1>
       <p className="text-lg mt-2 text-gray-500">
         {" "}
         Track what you read, want to read, and finished
       </p>
-      <div className="flex gap-5 mt-10">
+      <div className="flex flex-wrap gap-5 mt-10">
         <div>
           <h1 className="font-bold font-xl opacity-50">Total Books</h1>
           <span className="text-2xl font-bold opacity-50">{total}</span>
