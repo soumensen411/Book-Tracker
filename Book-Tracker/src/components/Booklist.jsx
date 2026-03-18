@@ -24,9 +24,22 @@ const Booklist = ({ books, onDel, onStatus }) => {
                 <div className="text-xs uppercase font-semibold opacity-50">
                   {book.author}
                 </div>
-                <button className="btn mt-1 btn-xs bg-green-700 border border-neutral-500 rounded-lg p-1">
-                  {book.status}
-                </button>
+
+                <span
+                  className={`badge text-xs font-semibold px-2 py-1 rounded-full ${
+                    book.status === "want to read"
+                      ? "bg-blue-100 text-blue-700"
+                      : book.status === "reading"
+                        ? "bg-yellow-100 text-yellow-700"
+                        : "bg-green-100 text-green-700"
+                  }`}
+                >
+                  {book.status === "want to read"
+                    ? "Wishlist"
+                    : book.status === "reading"
+                      ? "Reading"
+                      : "Completed"}
+                </span>
               </div>
               <div className="flex flex-wrap justify-center gap-2">
                 <button
