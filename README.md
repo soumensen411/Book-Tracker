@@ -2,7 +2,12 @@
 
 A personal book tracking app built with React. Track books you want to read, are currently reading, or have already finished.
 
-🔗 **Live Demo:** [https://soumensen411.github.io/Book-Tracker/](https://soumensen411.github.io/Book-Tracker/)
+--- 
+🔗 Live Demo:
+<a href="https://soumensen411.github.io/Book-Tracker/" target="_blank" rel="noopener noreferrer">
+  https://soumensen411.github.io/Book-Tracker/
+</a>
+
 
 ---
 
